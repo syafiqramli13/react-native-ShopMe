@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import Setting from './Setting';
+import Setting from './Profile';
 
 export default class Onboarding extends Component {
     constructor(props) {
