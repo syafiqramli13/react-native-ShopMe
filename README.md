@@ -1,6 +1,8 @@
 # react-native-ShopMe
 
-**yarn
-react-native run-android
+### yarn
+
+### react-native run-android
 or
-react-native run-android
+
+### react-native run-android
