@@ -198,9 +198,7 @@ export default class Cart extends Component {
                           styles.centerElement,
                           { height: 60, width: 60, resizeMode: 'contain', },
                         ]}
-
                           source={item.thumbnailImage}
-
                         />
                       </TouchableOpacity>
                     </Col>
@@ -219,11 +217,10 @@ export default class Cart extends Component {
                         <View style={{ flexDirection: 'row' }}>
                           <TouchableOpacity
                             onPress={() => this.quantityHandler('less', i)}
-                            style={{ borderWidth: 1, borderColor: '#cccccc' }}>
+                            style={{ borderWidth: 1, borderColor: '#cccccc', justifyContent: 'center' }}>
                             <Icon
                               name="remove"
-                              size={22}
-                              color="#cccccc"
+                              style={{ fontSize: 22, color: '#cccccc' }}
                             />
                           </TouchableOpacity>
                           <Text
@@ -232,16 +229,18 @@ export default class Cart extends Component {
                               borderBottomWidth: 1,
                               borderColor: '#cccccc',
                               paddingHorizontal: 7,
-                              paddingTop: 3,
+                              paddingTop: 6,
                               color: '#bbbbbb',
-                              fontSize: 13,
+                              fontSize: 15,
                             }}>
                             {item.qty}
                           </Text>
                           <TouchableOpacity
                             onPress={() => this.quantityHandler('more', i)}
-                            style={{ borderWidth: 1, borderColor: '#cccccc' }}>
-                            <Icon name="add" size={22} color="#cccccc" />
+                            style={{ borderWidth: 1, borderColor: '#cccccc', justifyContent: 'center' }}>
+                            <Icon
+                              name="add"
+                              style={{ fontSize: 22, color: '#cccccc' }} />
                           </TouchableOpacity>
                         </View>
                       </Row>
@@ -300,8 +299,6 @@ export default class Cart extends Component {
               borderColor: '#7fbf7f',
               borderWidth: 10,
               borderRadius: 15,
-              // borderTopRightRadius: 15,
-              // borderTopLeftRadius: 15,
               shadowColor: '#000',
               shadowOffset: {
                 width: 50,
@@ -390,8 +387,8 @@ const styles = StyleSheet.create({
   },
   card: {
     padding: 10,
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: 15,
+    marginRight: 15,
     marginBottom: 10,
     borderRadius: 15,
     flexDirection: 'row',

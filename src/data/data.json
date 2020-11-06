@@ -1,10 +1,10 @@
-{
-  "productList": [
+export default class ProductList extend Component{
+  [
     {
       "itemId": "111",
       "name": "Rack",
       "price": 500,
-      "src": "require('../images/rack.png')"
+      "src": require('../images/rack.png')
     },
     {
       "itemId": "222",
@@ -44,3 +44,4 @@
     }
   ]
 }
+ 

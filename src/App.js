@@ -25,7 +25,7 @@ export default class App extends Component {
             component={ProductList}
             left={() => null}
             title="Product List"
-            // initial={true}
+            initial={true}
             titleStyle={styles.header}
           />
           <Scene
@@ -34,8 +34,9 @@ export default class App extends Component {
             right={() => true}
             back={() => true}
             title="My Cart"
+            // hideNavBar
             titleStyle={styles.header}
-            initial={true}
+            // initial={true}
           />
           <Scene
             key="Checkout"

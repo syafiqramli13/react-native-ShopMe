@@ -3,7 +3,8 @@ import { Actions } from 'react-native-router-flux';
 import { Alert, StyleSheet, View, Image, ActivityIndicator, FlatList, ScrollView } from 'react-native';
 import { Container, Content, Footer, FooterTab, Button, Icon, Text, List, Badge, Card, CardItem, Body, Thumbnail, Header, Item, Input } from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
-import SearchBar from '../component/searchBar';
+import { SearchBar } from 'react-native-elements';
+// import SearchBar from '../component/searchBar';
 import data from '../data/data.json';
 
 export default class ProductList extends Component {
@@ -14,6 +15,8 @@ export default class ProductList extends Component {
       isLoading: true, // check if json data (online) is fetching
       dataSource: [], // store an object of json data
       search: '',
+      dataBackup: [],
+      img: '../images/rack.png',
     };
   }
 
@@ -25,9 +28,19 @@ export default class ProductList extends Component {
     });
   }
 
-  updateSearch = (search) => {
-    this.setState({ search });
-  };
+  setSearchText(event) {
+    searchText = event.nativeEvent.text;
+    dataSource = this.state.dataBackup;
+    searchText = searchText.trim().toLowerCase();
+
+    dataSource = dataSource.filter(l => {
+      return l.nama.toLowerCase().match(searchText);
+    });
+
+    this.setState({
+      dataSource: dataSource
+    });
+  }
 
 
   goToProfile = () => {
@@ -55,7 +68,13 @@ export default class ProductList extends Component {
 
     return (
       <Container style={{ backgroundColor: '#f6f6f6' }}>
-        <SearchBar />
+        {/* <SearchBar /> */}
+        {/* <SearchBar
+          lightTheme
+          placeholder="Type Here..."
+          onChange={this.setSearchText.bind(this)}
+        value={search}
+        /> */}
         <FlatList
           data={this.state.dataSource}
           renderItem={({ item }) => {
@@ -66,7 +85,7 @@ export default class ProductList extends Component {
                   <CardItem>
                     <Grid>
                       <Col size={40}>
-                        <Image style={styles.productImg} source={require('../images/bed.png')} />
+                        <Image style={styles.productImg} source={require(this.state.img)} />
                       </Col>
                       <Col size={30}>
                         <Row>
