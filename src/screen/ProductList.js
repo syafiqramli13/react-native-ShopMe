@@ -55,6 +55,10 @@ export default class ProductList extends Component {
   goToCheckout = () => {
     Actions.Checkout();
   }
+  //function to get img source from url string
+  getImageSource(imgSrc) {
+    return require(imgSrc);
+  }
 
   render() {
     // show waiting screen when json data is fetching
@@ -85,7 +89,7 @@ export default class ProductList extends Component {
                   <CardItem>
                     <Grid>
                       <Col size={40}>
-                        <Image style={styles.productImg} source={require(this.state.img)} />
+                        <Image style={styles.productImg} source={getImageSource(item.src)} />
                       </Col>
                       <Col size={30}>
                         <Row>
