@@ -6,6 +6,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import { SearchBar } from 'react-native-elements';
 // import SearchBar from '../component/searchBar';
 import data from '../data/data.json';
+import productList from '../data/data';
 
 export default class ProductList extends Component {
   constructor(props) {
@@ -24,7 +25,8 @@ export default class ProductList extends Component {
     //set state value
     this.setState({
       isLoading: false, //already loading
-      dataSource: data.productList
+      // dataSource: data.productList
+      dataSource: productList
     });
   }
 
@@ -89,7 +91,7 @@ export default class ProductList extends Component {
                   <CardItem>
                     <Grid>
                       <Col size={40}>
-                        <Image style={styles.productImg} source={getImageSource(item.src)} />
+                        <Image style={styles.productImg} source={item.src} />
                       </Col>
                       <Col size={30}>
                         <Row>
