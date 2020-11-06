@@ -4,8 +4,7 @@ import { Alert, StyleSheet, View, Image, TouchableOpacity, ScrollView, ActivityI
 import { Container, Content, Footer, FooterTab, Button, Icon, Text, List, Badge, Card, CardItem } from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import NumberFormat from 'react-number-format';
-import data from '../data/data.json';
-import test from '../data/test.json';
+import dataList from '../data/dataList';
 
 export default class Cart extends Component {
   constructor(props) {
@@ -13,65 +12,7 @@ export default class Cart extends Component {
     this.state = {
       selectAll: false,
       cartItemsIsLoading: false,
-      cartItems: [
-        {
-          itemId: '111',
-          name: 'Rack',
-          thumbnailImage: require('../images/rack.png'),
-          salePrice: '500',
-          qty: 1,
-          checked: 1,
-        },
-        {
-          itemId: '222',
-          name: 'Bed',
-          thumbnailImage: require('../images/bed.png'),
-          salePrice: '2000',
-          qty: 1,
-          checked: 0,
-        },
-        {
-          itemId: '333',
-          name: 'Sofa',
-          thumbnailImage: require('../images/sofa.png'),
-          salePrice: '1000',
-          qty: 1,
-          checked: 0,
-        },
-        {
-          itemId: '444',
-          name: 'Table',
-          thumbnailImage: require('../images/table.png'),
-          salePrice: '800',
-          qty: 1,
-          checked: 1,
-        },
-        {
-          itemId: '555',
-          name: 'Drawer',
-          thumbnailImage: require('../images/drawer.png'),
-          salePrice: '300',
-          qty: 1,
-          checked: 1,
-        },
-        {
-          itemId: '666',
-          name: 'Wardrobe',
-          thumbnailImage: require('../images/wardrobe.png'),
-          salePrice: '4500',
-          qty: 1,
-          checked: 0,
-        },
-        {
-          itemId: '777',
-          name: 'Study Lamp',
-          thumbnailImage: require('../images/studylamp.png'),
-          salePrice: '150',
-          qty: 1,
-          checked: 1,
-        },
-
-      ],
+      cartItems: [],
     };
   }
 
@@ -86,6 +27,12 @@ export default class Cart extends Component {
   }
   goToCheckout = () => {
     Actions.Checkout();
+  }
+
+  componentDidMount() {
+    this.setState({
+      cartItems: dataList
+    });
   }
 
   selectHandler = (index, value) => {

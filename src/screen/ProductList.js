@@ -5,7 +5,7 @@ import { Container, Content, Footer, FooterTab, Button, Icon, Text, List, Badge,
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { SearchBar } from 'react-native-elements';
 // import SearchBar from '../component/searchBar';
-import data from '../data/data.json';
+import dataList from '../data/dataList';
 
 export default class ProductList extends Component {
   constructor(props) {
@@ -14,9 +14,8 @@ export default class ProductList extends Component {
     this.state = {
       isLoading: true, // check if json data (online) is fetching
       dataSource: [], // store an object of json data
-      search: '',
       dataBackup: [],
-      img: '../images/rack.png',
+      search: '',
     };
   }
 
@@ -24,7 +23,7 @@ export default class ProductList extends Component {
     //set state value
     this.setState({
       isLoading: false, //already loading
-      dataSource: data.productList
+      dataSource: dataList
     });
   }
 
@@ -85,7 +84,7 @@ export default class ProductList extends Component {
                   <CardItem>
                     <Grid>
                       <Col size={40}>
-                        <Image style={styles.productImg} source={require(this.state.img)} />
+                        <Image style={styles.productImg} source={item.thumbnailImage} />
                       </Col>
                       <Col size={30}>
                         <Row>
@@ -97,7 +96,7 @@ export default class ProductList extends Component {
                       </Col>
                       <Col size={30}>
                         <Row>
-                          <Text style={styles.productPrice}>RM {item.price}</Text>
+                          <Text style={styles.productPrice}>RM {item.salePrice}</Text>
                         </Row>
                         <Row>
                           <Text style={styles.totalPrice}>RM 3,000</Text>
